@@ -54,6 +54,7 @@ do {
 } until ($dt[$i] -match "残り|開幕")
 if($dt[$i] -match "開幕"){
 }else{
+    $i++
     do {
         $tmp=$dt[$i].split(" ")
         if($tmp.length -gt 4){
@@ -72,23 +73,23 @@ if($dbg){echo "------------開幕-----------"}
 $km=@();$km2=@()
 do {
     $i++
-} until ($dt[$i] -match "自軍ダメージ")
+} until ($dt[$i] -match "^ダメージ")
 $i++
 do {
     $km+=$dt[$i]
     $i++
-} until ($dt[$i] -match "敵軍ダメージ")
-$i++
+} until ($dt[$i] -match "^敵軍ダメージ")
+$i=$i+3
 do {
     $km2+=$dt[$i]
     $i++
     #echo $i
-} until ($dt[$i] -match "自軍ダメージ")
+} until ($dt[$i] -match "敵軍攻撃")
 $btlskai=@()
 $t1=$km.split(" ")
 $t2=$km2.split(" ")
-#echo $t1
-#echo $t2
+echo "t1="+$t1
+echo "t2="+$t2
 for($i1=0 ;$i1 -lt $m1.length; $i1++){
     for($i2=0 ; $i2 -lt $m2.length; $i2++){
         if($t1[$i1][0] -eq $t2[$i2][0]){
