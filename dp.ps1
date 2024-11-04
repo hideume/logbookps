@@ -132,21 +132,21 @@ for ($i;$i -lt $dt.length;$i++){
         }elseif($tmp[4] -eq "→"){
             if($tmp.length -eq 11){
             #samuel B.ro MkIIとかを1つにする
-                #"31 $(($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],$tmp[6],$tmp[7],$tmp[8],$tmp[9],$tmp[10]) -join "/")"
-                #$btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],$tmp[6],$tmp[7],$tmp[8],$tmp[9],$tmp[10])
-                $btls+=,$(setlist $tmp 11 (1,3))
+                "31 $(($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],$tmp[6],$tmp[7],$tmp[8],$tmp[9],$tmp[10]) -join "/")"
+                $btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],$tmp[6],$tmp[7],$tmp[8],$tmp[9],$tmp[10])
+                #$btls+=,$(setlist $tmp 11 (1,3))
             }elseif($tmp.length -eq 12){
             #さらに敵軍にflagshipがある場合
-            #    "32 $(($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],($tmp[6]+$tmp[7]),$tmp[8],$tmp[9],$tmp[10],$tmp[11]) -join "/")"
-                #$btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],($tmp[6]+$tmp[7]),$tmp[8],$tmp[9],$tmp[10],$tmp[11])
-                $btls+=,$(setlist $tmp 12 (1,3) (6,7))
+               "#32 $(($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],($tmp[6]+$tmp[7]),$tmp[8],$tmp[9],$tmp[10],$tmp[11]) -join "/")"
+                $btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],($tmp[6]+$tmp[7]),$tmp[8],$tmp[9],$tmp[10],$tmp[11])
+                #$btls+=,$(setlist $tmp 12 (1,3) (6,7))
             }
         }
     }
 }
 if($dbg){echo "--------------砲撃(1,2)---------------"}
 if($dbg){for ($ii=0;$ii -lt $btls.length ;$ii++){
-    echo "$ii $($btls[$ii] -join ",") "
+    echo "$ii $($btls[$ii] -join "/") "
 }}
 #敵軍名,自軍名1、dmg1,自軍名2、dmg2,自軍名3、dmg3,自軍名4、dmg4
 #初期設定
