@@ -8,7 +8,7 @@ $m2 2番目の結合させるリスト1の最初と最後(省略可能）
 function setlist($j,$n,$m1,$m2=(-1,-1)){
     $rtnv=@()
     for($i=0;$i -lt $n;$i++){
-        if($m1 -contains $i -or $m2 -contains $i){
+        if($m1[0]..$m1[1] -contains $i -or $m2[0]..$m2[1] -contains $i){
             if($m1[1] -eq $i){
                 $tp=""
                 for($i2=$m1[0];$i2 -le $m1[1];$i2++){
@@ -133,13 +133,13 @@ for ($i;$i -lt $dt.length;$i++){
             if($tmp.length -eq 11){
             #samuel B.ro MkIIとかを1つにする
                 "31 $(($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],$tmp[6],$tmp[7],$tmp[8],$tmp[9],$tmp[10]) -join "/")"
-                $btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],$tmp[6],$tmp[7],$tmp[8],$tmp[9],$tmp[10])
-                #$btls+=,$(setlist $tmp 11 (1,3))
+                #$btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],$tmp[6],$tmp[7],$tmp[8],$tmp[9],$tmp[10])
+                $btls+=,$(setlist $tmp 11 (1,3))
             }elseif($tmp.length -eq 12){
             #さらに敵軍にflagshipがある場合
                "#32 $(($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],($tmp[6]+$tmp[7]),$tmp[8],$tmp[9],$tmp[10],$tmp[11]) -join "/")"
-                $btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],($tmp[6]+$tmp[7]),$tmp[8],$tmp[9],$tmp[10],$tmp[11])
-                #$btls+=,$(setlist $tmp 12 (1,3) (6,7))
+                #$btls+=,($tmp[0],($tmp[1]+$tmp[2]+$tmp[3]),$tmp[4],$tmp[5],($tmp[6]+$tmp[7]),$tmp[8],$tmp[9],$tmp[10],$tmp[11])
+                $btls+=,$(setlist $tmp 12 (1,3) (6,7))
             }
         }
     }
